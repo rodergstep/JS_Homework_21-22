@@ -1,6 +1,3 @@
-;
-"use strict";
-
 let dataObj = {
     topic: 'Тест #15',
     data: [{
@@ -115,7 +112,7 @@ $(() => {
 
         $userAnswers.each(function() {
             let id = $(this).attr('id');
-            if (_.include(rightAnswers, id)) {
+            if (_.includes(rightAnswers, id)) {
                 $(this).parent().addClass('right');
                 resultsObj.right++;
             } else {

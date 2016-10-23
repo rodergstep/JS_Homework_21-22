@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>HW JavaScript 21-22</title>
+        <link rel="stylesheet" href="css/style.min.css">
+        <script src="external/underscore-min.js"></script>
+        <script src="external/jquery.js"></script>
+        <script src="external/lodash.js"></script>
+        <script src="js/main.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <button class="start">start</button>
+            <div id="test-container"></div>
+        </div>
+        <script type="text/template" id="test">
+            <div class="results">
+                <h2>
+                    <%-topic%>
+                </h2>
+                <ol>
+                    <% data.forEach(function(item, key) { %>
+                        <li class="question">
+                            <%=item.question%>
+                                <ul>
+                                    <% item.answers.forEach(function(item, i) { %>
+                                        <li class="answer">
+                                            <label>
+                                                <input type="checkbox" id="<%=key+1%>-<%=i+1%>">
+                                                <%=item%>
+                                            </label>
+                                        </li>
+                                        <% }); %>
+                                </ul>
+                        </li>
+                        <% }); %>
+                </ol>
+                <button class="checkRes">finish</button>
+            </div>
+        </script>
+        <script type="text/template" id="modal-result">
+            <div id="shadow">
+                <div id="modalka">
+                    <% if (error) { %>
+                        <h4>
+                            <%=errorMsg%>
+                        </h4>
+                        <button id="OK">ok</button>
+                        <% } else { %>
+                            <h3>
+                                <%=msg%>
+                            </h3>
+                            <p>Right:
+                                <span>
+                                    <%=right%>
+                                </span> of
+                                <span>
+                                    <%=answersLength%>
+                                </span>
+                            </p>
+                            <p>Wrong:
+                                <span>
+                                    <%=wrong%>
+                                </span>
+                            </p>
+                            <button id="tryElse">try else</button>
+                            <button id="show-results">my results</button>
+                            <% } %>
+                </div>
+            </div>
+        </script>
+    </body>
+</html>
